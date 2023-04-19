@@ -1,6 +1,10 @@
 const express = require("express");
 
 const router = express.Router();
+
+// utils
+const generateToken = require("../config/generateAuthtoken");
+
 const USERS = []; //temp arr for now
 
 router.post("/signup", (req, res) => {
@@ -46,7 +50,11 @@ router.post("/login", function (req, res) {
     });
 
   res.status(200).json({
-    data: { name: user.name, email: user.email, token: "adwdawd" },
+    data: {
+      name: user.name,
+      email: user.email,
+      token: generateToken(user.email),
+    },
     status: "ok",
   });
 });
