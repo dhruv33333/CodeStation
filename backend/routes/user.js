@@ -53,7 +53,7 @@ router.post("/login", function (req, res) {
     data: {
       name: user.name,
       email: user.email,
-      token: generateToken(user.email),
+      token: generateToken(user.email), // todo use id here
     },
     status: "ok",
   });
